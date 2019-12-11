@@ -17,6 +17,9 @@ function prepareSsr() {
             router.get('/', (req, res) => {
                 const username = req.vhost[0]
 
+                /**
+                 * For example username johndoe does not exist
+                 */
                 if (username === 'johndoe') {
                     let error = new Error('Username not found')
                     error.statusCode = 500
