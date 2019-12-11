@@ -16,6 +16,13 @@ function prepareSsr() {
 
             router.get('/', (req, res) => {
                 const username = req.vhost[0]
+
+                if (username === 'johndoe') {
+                    let error = new Error('Username not found')
+                    error.statusCode = 500
+                    return app.renderError(error, req, res, "/_error", { status: 500, statusCode: 500, err: error})
+                }
+
                 return app.render(req, res, '/', {
                     username
                 })
